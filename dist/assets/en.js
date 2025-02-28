@@ -1,0 +1,1 @@
+const t={name:"Example App",short_description:"Short Description",long_description:"Long Description",installation_instructions:"Configure the following app settings, then click Install:...",title:"Example App"},e={title:"Hello from Ticket Side Bar"},i={title:"Hello from Modal"},o={app:t,ticket_sidebar:e,modal:i};export{t as app,o as default,i as modal,e as ticket_sidebar};
