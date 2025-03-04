@@ -16,5 +16,17 @@
     }
   },
   "version": "1.0",
-  "frameworkVersion": "2.0"
+  "frameworkVersion": "2.0",
+  "parameters": [
+    {
+      "name": "client_id",
+      "type": "text",
+      "secure": true
+    },
+    {
+      "name": "client_secret",
+      "type": "text",
+      "secure": true
+    }
+  ]
 }
