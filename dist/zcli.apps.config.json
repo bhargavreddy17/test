@@ -1,5 +1,2 @@
 {"_comment":"You can define test settings here. Check https://developer.zendesk.com/documentation/apps/getting-started/setting-up-new-apps/#defining-test-settings for more information",
-  "app_id":1110508,
-"ZENDESK_SUBDOMAIN":"ratnaglobaltech4188",
-"ZENDESK_EMAIL":"kallubhargavreddy@gmail.com",
-"ZENDESK_API_TOKEN":"20RjvUws3eQLsTeypzh4WOzci6mqBTQb4eALD3jC"}
+  "app_id":1110508}
