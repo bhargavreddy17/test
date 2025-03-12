@@ -38,7 +38,7 @@
 name: CI/CD Pipeline
 
 on:
-  workflow_dispatch:  # Manual trigger (for resuming after Smoke Test)
+  workflow_dispatch:  # For manually resuming production deployment
   push:
     branches:
       - main  # Adjust based on your workflow
@@ -47,7 +47,7 @@ jobs:
   deploy-to-qa:
     if: github.event_name == 'push'  # Only auto-run on push
     runs-on: ubuntu-latest
-    environment: qa
+    environment: QA
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -59,15 +59,14 @@ jobs:
         run: echo "QA Deployment Done! Manually trigger workflow for Prod Deployment"
     
   approve-and-deploy-to-prod:
-    if: github.event_name == 'workflow_dispatch'  # Only run when manually triggered
-    needs: deploy-to-qa
+    if: github.event_name == 'workflow_dispatch'  # Run only when manually triggered
     runs-on: ubuntu-latest
     environment:
-      name: production  # Requires manual approval
+      name: PROD  # Requires manual approval
+    concurrency: deploy-prod  # Ensures only one production deployment at a time
     steps:
       - name: Awaiting Approval
         run: echo "Waiting for Product Manager approval before deploying to Production..."
 
       - name: Deploy to Production
         run: echo "Deploying to Production..."
-
