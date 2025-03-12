@@ -1,34 +1,73 @@
+# name: CI/CD Pipeline
+
+# on:
+#   workflow_dispatch:  # Manual trigger (or use push for auto triggers)
+#   push:
+#     branches:
+#       - main  
+
+# jobs:
+#   deploy-to-qa:
+#     runs-on: ubuntu-latest
+#     environment: QA  
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v3
+
+#       - name: Deploy to QA
+#         run: echo "Deploying to QA..."
+  
+#   approve-before-prod:
+#     needs: deploy-to-qa
+#     runs-on: ubuntu-latest
+#     environment:
+#       name: PROD  # Requires manual approval before proceeding
+#     steps:
+#       - name: Awaiting Approval
+#         run: echo "Waiting for Product Manager approval before deploying to Production..."
+
+#   deploy-to-prod:
+#     needs: approve-before-prod
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy to Production
+#         run: echo "Deploying to Production..."
+
+
+
 name: CI/CD Pipeline
 
 on:
-  workflow_dispatch:  # Manual trigger (or use push for auto triggers)
+  workflow_dispatch:  # Manual trigger (for resuming after Smoke Test)
   push:
     branches:
-      - main  
+      - main  # Adjust based on your workflow
 
 jobs:
   deploy-to-qa:
+    if: github.event_name == 'push'  # Only auto-run on push
     runs-on: ubuntu-latest
-    environment: QA  
+    environment: qa
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Deploy to QA
         run: echo "Deploying to QA..."
-  
-  approve-before-prod:
+
+      - name: End Workflow After QA Deployment
+        run: echo "QA Deployment Done! Manually trigger workflow for Prod Deployment"
+    
+  approve-and-deploy-to-prod:
+    if: github.event_name == 'workflow_dispatch'  # Only run when manually triggered
     needs: deploy-to-qa
     runs-on: ubuntu-latest
     environment:
-      name: PROD  # Requires manual approval before proceeding
+      name: production  # Requires manual approval
     steps:
       - name: Awaiting Approval
         run: echo "Waiting for Product Manager approval before deploying to Production..."
 
-  deploy-to-prod:
-    needs: approve-before-prod
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to Production
         run: echo "Deploying to Production..."
+
