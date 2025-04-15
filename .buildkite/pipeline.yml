@@ -1,16 +1,5 @@
 steps:
-    
-  - label: "Frontend Build - Checking Parallel Builds"
-    #branches: "main"
-    command:
-      - echo "retry job" 
-      - echo "passed jobs"
-      - E@#@chO+= "Hello Bhargav"
-    retry:
-      automatic:
-        - exit_status: "*"
-          limit: 2
-  - label: "Backend Build - Checking Parallel Builds"
-    #branches: "main"
-    command:
-      - echo "Welcome to Buildkite Parallel builds"
+  - include: test-case-1.yml
+  - include: test-case-2.yml
+  - include: test-case-3.yml
+
