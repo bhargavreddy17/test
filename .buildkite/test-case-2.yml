@@ -1,0 +1,4 @@
+steps:
+  - label: "Frontend Build - Checking testcase 2"
+    command:
+      - echo "Test case 2"
