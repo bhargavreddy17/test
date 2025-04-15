@@ -1,0 +1,4 @@
+steps:
+  - label: "Frontend Build - testcase3"
+    command:
+      - echo "Hello Testcase3"
