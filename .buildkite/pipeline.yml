@@ -1,5 +1,13 @@
 steps:
-  - include: test-case-1.yml
-  - include: test-case-2.yml
-  - include: test-case-3.yml
+  - label: "Run Test Case 1"
+    command: "buildkite-agent pipeline upload .buildkite/test-case-1.yaml"
+    key: "test-case-1"
+  
+  - label: "Run Test Case 2"
+    command: "buildkite-agent pipeline upload .buildkite/test-case-2.yaml"
+    key: "test-case-2"
+  
+  - label: "Run Test Case 3"
+    command: "buildkite-agent pipeline upload .buildkite/test-case-3.yaml"
+    key: "test-case-3"
 
