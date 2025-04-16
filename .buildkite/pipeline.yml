@@ -1,13 +1,13 @@
 steps:
-  - label: "Run Test Case 1"
-    command: "buildkite-agent pipeline upload .buildkite/test-case-1.yml"
-    key: "test-case-1"
-  
-  - label: "Run Test Case 2"
-    command: "buildkite-agent pipeline upload .buildkite/test-case-2.yml"
-    key: "test-case-2"
-  
-  - label: "Run Test Case 3"
-    command: "buildkite-agent pipeline upload .buildkite/test-case-3.yml"
-    key: "test-case-3"
+  - trigger: "test-case-1"
+    label: "🔧 Run Test Case 1"
+    async: true
+
+  - trigger: "test-case-2"
+    label: "🔧 Run Test Case 2"
+    async: true
+
+  - trigger: "test-case-3"
+    label: "🔧 Run Test Case 3"
+    async: true
 
