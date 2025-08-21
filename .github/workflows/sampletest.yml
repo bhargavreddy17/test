@@ -1,0 +1,27 @@
+# .github/workflows/testsql.yml
+
+name: Check for SQL Commands in PR # You can keep your workflow's name
+
+# --- THIS IS THE PART TO FIX ---
+# Add this 'on:' block to the top of your file.
+# This allows the workflow to be triggered manually from our dashboard.
+on:
+  workflow_dispatch:
+  # If you also want it to run on pushes or pull requests,
+  # you can keep those triggers here as well. For example:
+  pull_request:
+    branches:
+      - main
+      - test
+
+# --- YOUR EXISTING JOBS GO HERE ---
+# Make sure your jobs section is below the 'on:' block.
+jobs:
+  your_job_name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Your first step
+        run: echo "The rest of your workflow file stays the same."
+
+      - name: Your second step
+        run: echo "Hello, world!"
