@@ -12,7 +12,7 @@ on:
   pull_request:
     branches:
       - main
-      - test
+      - Test-branch
 
 # --- YOUR EXISTING JOBS GO HERE ---
 # Make sure your jobs section is below the 'on:' block.
